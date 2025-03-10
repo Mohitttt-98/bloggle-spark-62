@@ -33,10 +33,19 @@ const BlogPost = () => {
       <div className="min-h-screen bg-background">
         <Navbar />
         <div className="container flex items-center justify-center min-h-[70vh]">
-          <div className="flex flex-col items-center gap-4">
-            <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-primary"></div>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center gap-4"
+          >
+            <motion.div 
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              className="h-8 w-8 rounded-full border-b-2 border-primary"
+            ></motion.div>
             <p className="text-muted-foreground">Loading article...</p>
-          </div>
+          </motion.div>
         </div>
       </div>
     );
@@ -47,37 +56,80 @@ const BlogPost = () => {
       <div className="min-h-screen bg-background">
         <Navbar />
         <div className="container flex flex-col items-center justify-center gap-4 min-h-[70vh] px-4 md:px-8">
-          <h1 className="text-2xl font-bold text-foreground">Article not found</h1>
-          <p className="text-muted-foreground">The article you're looking for doesn't exist or has been removed.</p>
-          <button 
+          <motion.h1 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-2xl font-bold text-foreground"
+          >
+            Article not found
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-muted-foreground"
+          >
+            The article you're looking for doesn't exist or has been removed.
+          </motion.p>
+          <motion.button 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => navigate("/")}
             className="mt-4 inline-flex items-center text-sm font-medium text-primary"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to home
-          </button>
+          </motion.button>
         </div>
       </div>
     );
   }
+
+  // Animation variants for staggered children
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       
       <main className="pt-24 pb-20">
-        <article className="container px-4 md:px-8">
+        <motion.article 
+          initial="hidden"
+          animate="show"
+          variants={containerVariants}
+          className="container px-4 md:px-8"
+        >
           {/* Back Button */}
           <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3 }}
+            variants={itemVariants}
           >
             <button 
               onClick={() => navigate("/")}
               className="mb-8 inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground"
             >
-              <ArrowLeft className="mr-2 h-4 w-4" />
+              <motion.span
+                whileHover={{ x: -3 }}
+                transition={{ duration: 0.2 }}
+              >
+                <ArrowLeft className="mr-2 h-4 w-4" />
+              </motion.span>
               Back to all articles
             </button>
           </motion.div>
@@ -85,9 +137,7 @@ const BlogPost = () => {
           {/* Article Header */}
           <div className="mx-auto max-w-3xl">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              variants={itemVariants}
               className="mb-8"
             >
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -112,10 +162,13 @@ const BlogPost = () => {
             
             {/* Featured Image */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              variants={itemVariants}
               className="mb-12 aspect-[16/9] w-full overflow-hidden rounded-2xl"
+              whileInView={{ 
+                scale: [0.95, 1],
+                opacity: [0.8, 1]
+              }}
+              transition={{ duration: 0.5 }}
             >
               <img 
                 src={post.coverImage} 
@@ -126,23 +179,19 @@ const BlogPost = () => {
             
             {/* Article Content */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              variants={itemVariants}
               className="prose prose-lg mx-auto max-w-3xl dark:prose-invert"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
             
             {/* Comment Section */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              variants={itemVariants}
             >
               {id && <CommentSection postId={id} />}
             </motion.div>
           </div>
-        </article>
+        </motion.article>
       </main>
       
       <Footer />
