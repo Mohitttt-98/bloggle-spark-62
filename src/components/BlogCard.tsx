@@ -10,9 +10,10 @@ interface BlogCardProps {
   date: string;
   category: string;
   coverImage: string;
+  onClick?: () => void;  // Make onClick optional
 }
 
-const BlogCard = ({ id, title, excerpt, date, category, coverImage }: BlogCardProps) => {
+const BlogCard = ({ id, title, excerpt, date, category, coverImage, onClick }: BlogCardProps) => {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -46,6 +47,7 @@ const BlogCard = ({ id, title, excerpt, date, category, coverImage }: BlogCardPr
         <Link 
           to={`/blog/${id}`} 
           className="mt-4 inline-flex items-center text-sm font-medium text-foreground group-hover:text-primary"
+          onClick={onClick}
         >
           Read more 
           <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />

@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import CommentSection from "../components/CommentSection";
 import { getPostById, BlogPost as BlogPostType } from "../lib/blogData";
 
 const BlogPost = () => {
@@ -131,6 +132,15 @@ const BlogPost = () => {
               className="prose prose-lg mx-auto max-w-3xl dark:prose-invert"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
+            
+            {/* Comment Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              {id && <CommentSection postId={id} />}
+            </motion.div>
           </div>
         </article>
       </main>
