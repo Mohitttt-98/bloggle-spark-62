@@ -38,6 +38,10 @@ const Blog = () => {
     setSearchTerm(query);
   };
 
+  const handleCardClick = (postId: string) => {
+    navigate(`/blog/${postId}`);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -53,7 +57,7 @@ const Blog = () => {
               Our Blog
             </h1>
             <p className="mt-4 max-w-2xl text-muted-foreground">
-              Explore our latest articles on design, technology, productivity, and more.
+              Explore our complete collection of articles on design, technology, productivity, and more.
             </p>
           </motion.div>
           
@@ -101,7 +105,7 @@ const Blog = () => {
                   date={post.date}
                   category={post.category}
                   coverImage={post.coverImage}
-                  onClick={() => navigate(`/blog/${post.id}`)}
+                  onClick={() => handleCardClick(post.id)}
                 />
               ))
             ) : (

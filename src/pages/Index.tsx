@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import BlogCard from "../components/BlogCard";
@@ -8,7 +9,13 @@ import SearchBar from "../components/SearchBar";
 import { blogPosts, blogCategories, searchPosts } from "../lib/blogData";
 
 const Index = () => {
-  const [filteredPosts, setFilteredPosts] = useState(blogPosts);
+  const navigate = useNavigate();
+  // Get only the latest 3 posts for the home page
+  const latestPosts = [...blogPosts]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 3);
+    
+  const [filteredPosts, setFilteredPosts] = useState(latestPosts);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,11 +30,18 @@ const Index = () => {
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     if (!query.trim()) {
-      setFilteredPosts(blogPosts);
+      setFilteredPosts(latestPosts);
     } else {
       const results = searchPosts(query);
-      setFilteredPosts(results);
+      // Still limit to the latest posts that match the search query
+      const filteredLatest = results
+        .filter(post => latestPosts.some(latest => latest.id === post.id));
+      setFilteredPosts(filteredLatest);
     }
+  };
+
+  const handleCardClick = (postId: string) => {
+    navigate(`/blog/${postId}`);
   };
 
   const container = {
@@ -71,23 +85,33 @@ const Index = () => {
               Welcome to Minimalist, where thoughtful content meets beautiful design.
               Discover articles that challenge, inform, and inspire.
             </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-8"
+            >
+              <button 
+                onClick={() => navigate('/blog')}
+                className="rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              >
+                View All Posts
+              </button>
+            </motion.div>
           </motion.div>
         </section>
 
-        {/* Search and Filter Section */}
+        {/* Latest Blog Posts Grid */}
         <section className="container mt-16 px-4 md:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mx-auto max-w-2xl"
-          >
-            <SearchBar onSearch={handleSearch} categories={blogCategories} />
-          </motion.div>
-        </section>
-
-        {/* Blog Posts Grid */}
-        <section className="container mt-16 px-4 md:px-8">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">
+              Latest Articles
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Our newest content, hot off the press
+            </p>
+          </div>
+          
           <motion.div
             variants={container}
             initial="hidden"
@@ -104,6 +128,7 @@ const Index = () => {
                   date={post.date}
                   category={post.category}
                   coverImage={post.coverImage}
+                  onClick={() => handleCardClick(post.id)}
                 />
               ))
             ) : (
