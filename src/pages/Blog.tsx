@@ -34,6 +34,10 @@ const Blog = () => {
     setFilteredPosts(results);
   }, [searchTerm, activeCategory]);
 
+  const handleSearch = (query: string) => {
+    setSearchTerm(query);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -55,9 +59,8 @@ const Blog = () => {
           
           <div className="mt-12">
             <SearchBar 
-              searchTerm={searchTerm} 
-              onSearchChange={setSearchTerm} 
-              placeholder="Search articles..." 
+              onSearch={handleSearch}
+              categories={blogCategories}
             />
           </div>
           
@@ -92,7 +95,12 @@ const Blog = () => {
               filteredPosts.map(post => (
                 <BlogCard
                   key={post.id}
-                  post={post}
+                  id={post.id}
+                  title={post.title}
+                  excerpt={post.excerpt}
+                  date={post.date}
+                  category={post.category}
+                  coverImage={post.coverImage}
                   onClick={() => navigate(`/blog/${post.id}`)}
                 />
               ))
