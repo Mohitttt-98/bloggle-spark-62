@@ -11,6 +11,7 @@ import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import AdminSubscribers from "./pages/AdminSubscribers";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/admin/subscribers" element={<AdminSubscribers />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
