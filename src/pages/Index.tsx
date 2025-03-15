@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import BlogCard from "../components/BlogCard";
 import SearchBar from "../components/SearchBar";
+import NewsletterForm from "../components/NewsletterForm";
 import { blogPosts, blogCategories, searchPosts } from "../lib/blogData";
 
 const Index = () => {
@@ -220,24 +220,7 @@ const Index = () => {
                 viewport={{ once: true }}
                 className="mt-6 flex items-center justify-center"
               >
-                <div className="w-full max-w-md">
-                  <form className="flex gap-2">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="w-full rounded-lg border border-border bg-background px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary/20"
-                      required
-                    />
-                    <motion.button
-                      type="submit"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                    >
-                      Subscribe
-                    </motion.button>
-                  </form>
-                </div>
+                <NewsletterForm />
               </motion.div>
             </div>
           </motion.div>

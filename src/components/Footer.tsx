@@ -1,6 +1,7 @@
 
 import { Github, Twitter, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -67,8 +68,8 @@ const Footer = () => {
         >
           <p>© {currentYear} Minimalist. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground">Privacy Policy</a>
-            <a href="#" className="hover:text-foreground">Terms of Service</a>
+            <Link to="/privacy-policy" className="hover:text-foreground">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="hover:text-foreground">Terms of Service</Link>
           </div>
         </motion.div>
       </div>
