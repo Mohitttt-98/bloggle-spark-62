@@ -99,10 +99,7 @@ const Index = () => {
               delay: 0.1
             }}>in Tech</motion.span>
             </motion.h1>
-            <motion.p variants={heroItemVariants} className="mt-6 text-lg text-muted-foreground">
-              Welcome to Minimalist, where thoughtful content meets beautiful design.
-              Discover articles that challenge, inform, and inspire.
-            </motion.p>
+            <motion.p variants={heroItemVariants} className="mt-6 text-lg text-muted-foreground">Welcome to Molester's Tech, where we molest tech, not people. Oh wait! Nor animals or any living organism (dead people included).</motion.p>
             <motion.div variants={heroItemVariants} className="mt-8">
               <motion.button onClick={() => navigate('/blog')} whileHover={{
               scale: 1.05
