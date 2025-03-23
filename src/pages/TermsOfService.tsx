@@ -40,21 +40,21 @@ const TermsOfService = () => {
             </ul>
             
             <h2 className="mt-6 text-xl font-semibold">4. Newsletter Subscription</h2>
-            <p>Sign up, get emails, probably ignore them. That’s the deal. Want out? Hit unsubscribe like a normal human.</p>
+            <p>Everything here is as-is. If you trust it and it ruins your life, well, that’s on you.</p>
             
-            <h2 className="mt-6 text-xl font-semibold">5. Disclaimer of Warranties</h2>
+            <h2 className="mt-6 text-xl font-semibold">If this website somehow causes you distress, financial ruin, or an existential crisis—oops. But again, not our problem.</h2>
             <p>
               Our content is provided "as is" without warranties of any kind, either express or implied. 
               We do not guarantee the accuracy, completeness, or reliability of any content.
             </p>
             
-            <h2 className="mt-6 text-xl font-semibold">6. Limitation of Liability</h2>
+            <h2 className="mt-6 text-xl font-semibold">We’ll change these whenever we feel like it. No, we won’t tell you. Figure it out.</h2>
             <p>
               We will not be liable for any damages arising from the use of our website or newsletter, 
               including but not limited to direct, indirect, incidental, or consequential damages.
             </p>
             
-            <h2 className="mt-6 text-xl font-semibold">7. Changes to Terms</h2>
+            <h2 className="mt-6 text-xl font-semibold">If, for some reason, you have questions, go to the Contact Us page and type something. No promises we’ll read it.</h2>
             <p>
               We reserve the right to modify these terms at any time. We will notify users of any 
               significant changes by posting the new terms on this page.
