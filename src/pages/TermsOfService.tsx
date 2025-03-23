@@ -1,53 +1,46 @@
-
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
 const TermsOfService = () => {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navbar />
       
       <main className="container px-4 py-16 md:px-8 md:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto max-w-3xl"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 0.5
+      }} className="mx-auto max-w-3xl">
           <h1 className="mb-8 text-3xl font-bold tracking-tight md:text-4xl">Terms of Service</h1>
           
           <div className="prose prose-slate max-w-none dark:prose-invert">
-            <p className="text-muted-foreground">Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+            <p className="text-muted-foreground">Last updated: {new Date().toLocaleDateString('en-US', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric'
+            })}</p>
             
             <h2 className="mt-8 text-xl font-semibold">1. Acceptance of Terms</h2>
-            <p>
-              By accessing or using the Minimalist website and newsletter, you agree to be bound by these Terms of Service.
-              If you do not agree to all these terms, you may not use our services.
-            </p>
+            <p>By being here, you agree to whatever nonsense we slap on this page. Don’t like it? Then leave. Not our problem.</p>
             
             <h2 className="mt-6 text-xl font-semibold">2. Use of Content</h2>
-            <p>
-              All content published on Minimalist, including articles, images, and graphics, is owned by us and 
-              protected by copyright laws. You may not reproduce, distribute, or create derivative works without 
-              our express permission.
-            </p>
+            <p>Some of the content is ours. Some of it belongs to random people on the internet. We steal. You steal. It’s the circle of life. Just don’t be annoying about it.</p>
             
             <h2 className="mt-6 text-xl font-semibold">3. User Conduct</h2>
-            <p>When using our website or interacting with our content, you agree not to:</p>
+            <p>When using this site, don’t:</p>
             <ul className="list-disc pl-6">
-              <li>Violate any applicable laws or regulations</li>
-              <li>Infringe on the rights of others</li>
-              <li>Post or transmit harmful content</li>
-              <li>Attempt to gain unauthorized access to our systems</li>
+              <li>Break any laws (or at least don’t get caught).</li>
+              <li>Annoy us or other people (or do, we’re not your parents).</li>
+              <li>Post garbage (but if you must, make it entertaining).</li>
+              <li>Try hacking us (seriously, go touch grass).</li>
             </ul>
             
             <h2 className="mt-6 text-xl font-semibold">4. Newsletter Subscription</h2>
-            <p>
-              By subscribing to our newsletter, you consent to receive periodic emails from us. 
-              We will handle your information in accordance with our Privacy Policy. 
-              You may unsubscribe at any time by clicking the unsubscribe link in our emails.
-            </p>
+            <p>Sign up, get emails, probably ignore them. That’s the deal. Want out? Hit unsubscribe like a normal human.</p>
             
             <h2 className="mt-6 text-xl font-semibold">5. Disclaimer of Warranties</h2>
             <p>
@@ -77,8 +70,6 @@ const TermsOfService = () => {
       </main>
       
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default TermsOfService;
