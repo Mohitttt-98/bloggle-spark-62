@@ -1,24 +1,28 @@
-
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
 const PrivacyPolicy = () => {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navbar />
       
       <main className="container px-4 py-16 md:px-8 md:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto max-w-3xl"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 0.5
+      }} className="mx-auto max-w-3xl">
           <h1 className="mb-8 text-3xl font-bold tracking-tight md:text-4xl">Privacy Policy</h1>
           
           <div className="prose prose-slate max-w-none dark:prose-invert">
-            <p className="text-muted-foreground">Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+            <p className="text-muted-foreground">Last updated: {new Date().toLocaleDateString('en-US', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric'
+            })}</p>
             
             <h2 className="mt-8 text-xl font-semibold">1. Introduction</h2>
             <p>
@@ -64,17 +68,12 @@ const PrivacyPolicy = () => {
             </p>
             
             <h2 className="mt-6 text-xl font-semibold">7. Contact Us</h2>
-            <p>
-              If you have any questions about this privacy policy, please contact us at 
-              privacy@minimalist.com.
-            </p>
+            <p>If, for some reason, you have questions, go to the Contact Us page and type something. No promises we’ll read it.</p>
           </div>
         </motion.div>
       </main>
       
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default PrivacyPolicy;
