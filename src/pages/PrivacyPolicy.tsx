@@ -1,28 +1,24 @@
+
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
 const PrivacyPolicy = () => {
-  return <div className="min-h-screen bg-background">
+  return (
+    <div className="min-h-screen bg-background">
       <Navbar />
       
       <main className="container px-4 py-16 md:px-8 md:py-24">
-        <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.5
-      }} className="mx-auto max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mx-auto max-w-3xl"
+        >
           <h1 className="mb-8 text-3xl font-bold tracking-tight md:text-4xl">Privacy Policy</h1>
           
           <div className="prose prose-slate max-w-none dark:prose-invert">
-            <p className="text-muted-foreground">Last updated: {new Date().toLocaleDateString('en-US', {
-              month: 'long',
-              day: 'numeric',
-              year: 'numeric'
-            })}</p>
+            <p className="text-muted-foreground">Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
             
             <h2 className="mt-8 text-xl font-semibold">1. Introduction</h2>
             <p>
@@ -54,7 +50,7 @@ const PrivacyPolicy = () => {
             </p>
             
             <h2 className="mt-6 text-xl font-semibold">5. Your Rights</h2>
-            <p>We might change this whenever we feel like it. No, we won’t send you an update. Just check back if you’re paranoid.</p>
+            <p>You have the right to:</p>
             <ul className="list-disc pl-6">
               <li>Unsubscribe from our newsletter at any time</li>
               <li>Request access to your personal data</li>
@@ -77,6 +73,8 @@ const PrivacyPolicy = () => {
       </main>
       
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default PrivacyPolicy;
