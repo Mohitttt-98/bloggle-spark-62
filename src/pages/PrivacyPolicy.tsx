@@ -25,26 +25,38 @@ const PrivacyPolicy = () => {
             })}</p>
             
             <h2 className="mt-8 text-xl font-semibold">1. Introduction</h2>
-            <p>Welcome to Molester’s Tech. This is the part where we pretend to care about your privacy. If you're reading this, congratulations—you’re one of the few people on the internet who actually reads privacy policies. We collect some data. We use it. That’s about it.</p>
+            <p>
+              At Minimalist, we respect your privacy and are committed to protecting your personal data. 
+              This privacy policy explains how we collect, use, and safeguard your information when you 
+              visit our website or subscribe to our newsletter.
+            </p>
             
             <h2 className="mt-6 text-xl font-semibold">2. Information We Collect</h2>
-            <p>Some anonymous data gets collected through cookies because, well, every website does that. Don’t worry, we don’t care enough to stalk you.</p>
+            <p>
+              We collect email addresses when you subscribe to our newsletter. 
+              We may also collect anonymous usage data through cookies and similar technologies 
+              to improve our website and services.
+            </p>
             
             <h2 className="mt-6 text-xl font-semibold">3. How We Use Your Information</h2>
-            <p>Honestly, we just:</p>
+            <p>We use your email address to:</p>
             <ul className="list-disc pl-6">
-              <li>Send you emails you’ll probably ignore.</li>
-              <li>Occasionally responding to your complaints (if we feel like it).</li>
-              <li>Pretend to "improve" the website when we feel productive (rarely).</li>
+              <li>Send you our newsletter with blog updates and relevant content</li>
+              <li>Respond to your inquiries or requests</li>
+              <li>Improve our website and newsletter content</li>
             </ul>
             
             <h2 className="mt-6 text-xl font-semibold">4. Data Security</h2>
-            <p>We try to keep your data safe, but let’s be honest—no internet transmission is 100% secure. So if the aliens, hackers, or government decide to take a peek, we assume they have bigger problems than this blog.</p>
+            <p>
+              We implement appropriate security measures to protect your personal information. 
+              However, no method of transmission over the Internet is 100% secure, and we cannot 
+              guarantee absolute security.
+            </p>
             
-            <h2 className="mt-6 text-xl font-semibold">5. Your Rights (Yeah, You Have Some)</h2>
-            
+            <h2 className="mt-6 text-xl font-semibold">5. Your Rights</h2>
+            <p>We might change this whenever we feel like it. No, we won’t send you an update. Just check back if you’re paranoid.</p>
             <ul className="list-disc pl-6">
-              <li>You can unsubscribe whenever (but that’s your loss, buddy).</li>
+              <li>Unsubscribe from our newsletter at any time</li>
               <li>Request access to your personal data</li>
               <li>Request correction or deletion of your personal data</li>
             </ul>
