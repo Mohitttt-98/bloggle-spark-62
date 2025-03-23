@@ -1,6 +1,9 @@
+
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
 const PrivacyPolicy = () => {
   return <div className="min-h-screen bg-background">
       <Navbar />
@@ -68,7 +71,7 @@ const PrivacyPolicy = () => {
             </p>
             
             <h2 className="mt-6 text-xl font-semibold">7. Contact Us</h2>
-            <p>If, for some reason, you have questions, go to the Contact Us page and type something. No promises we’ll read it.</p>
+            <p>If, for some reason, you have questions, <Link to="/contact" className="text-primary hover:underline">go to the Contact Us page</Link> and type something. No promises we'll read it.</p>
           </div>
         </motion.div>
       </main>
