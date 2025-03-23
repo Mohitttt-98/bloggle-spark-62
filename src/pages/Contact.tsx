@@ -4,6 +4,13 @@ import { motion } from "framer-motion";
 import { Send, Check } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useToast } from "../hooks/use-toast";
+import emailjs from "emailjs-com";
+
+// EmailJS service configuration
+const EMAILJS_SERVICE_ID = "service_ymwbxv5"; // You would need to replace with your actual service ID
+const EMAILJS_TEMPLATE_ID = "template_sln7cxq"; // You would need to replace with your actual template ID
+const EMAILJS_USER_ID = "8Qvl7F88uB9Y3cmbf"; // You would need to replace with your actual user ID
 
 const Contact = () => {
   const [formState, setFormState] = useState({
@@ -14,19 +21,35 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { toast } = useToast();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formState.name,
+        from_email: formState.email,
+        subject: formState.subject,
+        message: formState.message,
+        to_email: "gauravmohit1324@gmail.com" // The recipient email
+      };
+      
+      // Send email using EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_USER_ID
+      );
+      
       setIsSubmitted(true);
       setFormState({
         name: "",
@@ -35,11 +58,27 @@ const Contact = () => {
         message: ""
       });
       
+      toast({
+        title: "Message Sent",
+        description: "Your message has been sent successfully!",
+        duration: 5000,
+      });
+      
       // Reset submission status after delay
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
-    }, 1500);
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send your message. Please try again later.",
+        variant: "destructive",
+        duration: 5000,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -165,7 +204,7 @@ const Contact = () => {
             <div className="grid gap-8 p-8 md:grid-cols-3 md:p-12">
               <div className="text-center md:text-left">
                 <h3 className="text-lg font-medium">Email</h3>
-                <p className="mt-2 text-muted-foreground">contact@minimalist.com</p>
+                <p className="mt-2 text-muted-foreground">gauravmohit1324@gmail.com</p>
               </div>
               <div className="text-center md:text-left">
                 <h3 className="text-lg font-medium">Location</h3>
