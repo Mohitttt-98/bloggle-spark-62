@@ -16,10 +16,8 @@ const Footer = () => {
           }} transition={{
             duration: 0.5
           }} className="flex flex-col items-center gap-1 md:items-start">
-              <h3 className="text-xl font-bold tracking-tight">Molesting Tech Everyday, Everywhere.</h3>
-              <p className="text-sm text-muted-foreground">
-                Beautiful stories, elegantly told
-              </p>
+              <h3 className="text-xl font-bold tracking-tight">Molester's Tech</h3>
+              <p className="text-sm text-muted-foreground">Molesting Tech, Everyday, Everywhere.</p>
             </motion.div>
           </div>
           
